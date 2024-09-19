@@ -1,8 +1,7 @@
 import { PropsWithChildren } from 'react';
-import Taro, {useDidShow} from "@tarojs/taro";
-import {ConfigProvider} from '@antmjs/vantui';
-import './app.less'
-
+import Taro, { useDidShow, useLaunch } from '@tarojs/taro';
+import { ConfigProvider } from '@antmjs/vantui';
+import './app.less';
 
 const updateManager = Taro.getUpdateManager();
 updateManager.onUpdateReady(() => {
@@ -10,16 +9,17 @@ updateManager.onUpdateReady(() => {
     title: '更新提示',
     content: '新版本已经准备好，即将重启应用。',
     showCancel: false,
-  })
-    .then(updateManager.applyUpdate);
+  }).then(updateManager.applyUpdate);
 });
 
+export default (props: PropsWithChildren) => {
+  useLaunch(() => {
+    console.log('App launched.');
+  });
 
-export default (props: PropsWithChildren)=>{
-
-  useDidShow(()=>{
+  useDidShow(() => {
     console.log(`${process.env.TARO_ENV}运行版本：`, __wxConfig.envVersion);
-  })
+  });
 
   // 这里定义你的主题样式
   const themeVars = {
@@ -28,11 +28,7 @@ export default (props: PropsWithChildren)=>{
     sliderBarHeight: '4px',
     sliderButtonWidth: '20px',
     sliderButtonHeight: '20px',
-  }
+  };
 
-  return (
-    <ConfigProvider themeVars={themeVars}>
-      {props.children}
-    </ConfigProvider>
-  )
-}
+  return <ConfigProvider themeVars={themeVars}>{props.children}</ConfigProvider>;
+};
