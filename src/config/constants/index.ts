@@ -1,2 +1,1 @@
-
-export const TOKEN = 'parsec-weapp-token'
+export const TOKEN = 'parsec-weapp-token';
