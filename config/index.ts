@@ -56,7 +56,7 @@ export default defineConfig(async (merge) => {
     h5: {
       publicPath: '/',
       staticDirectory: 'static',
-      esnextModules: ['/@antmjs[/]vantui/'],
+      esnextModules: [/@antmjs[\/]vantui/] as any,
       output: {
         filename: 'js/[name].[hash:8].js',
         chunkFilename: 'js/[name].[chunkhash:8].js',

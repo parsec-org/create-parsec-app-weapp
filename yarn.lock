@@ -10,10 +10,10 @@
     "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.24"
 
-"@antmjs/vantui@^3.4.9":
-  version "3.4.9"
-  resolved "https://registry.yarnpkg.com/@antmjs/vantui/-/vantui-3.4.9.tgz#a47407b4adc948993701741f4e8afc9096463228"
-  integrity sha512-AqHLf2Eqfd/okkvOWj/DoK8X5hEzUIPjWHDdDtU7f2ndhzojXLr5wD9bAZ4g5txKBgFo+x9btUgVP5tuxdq7wg==
+"@antmjs/vantui@^3.5.4":
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/@antmjs/vantui/-/vantui-3.5.4.tgz#314b6f1e1b8fce76af5bce99e992a57920f6804e"
+  integrity sha512-Gixo36VFapUnBgVpFVmQxfcjBUIL1roGpH4zMCferpzjhJrSaiDybPI2hE2rM9YuZ36m4mGHLO9EN+pft+H0Wg==
   dependencies:
     "@swc/helpers" "^0.5.0"
     "@vant/icons" "^1.7.1"
