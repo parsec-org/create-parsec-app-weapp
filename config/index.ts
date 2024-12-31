@@ -1,6 +1,7 @@
 import path from 'path';
 import { defineConfig, type UserConfigExport } from '@tarojs/cli';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import router from './router';
 import devConfig from './dev';
 import prodConfig from './prod';
 
@@ -65,6 +66,10 @@ export default defineConfig(async (merge) => {
         ignoreOrder: true,
         filename: 'css/[name].[hash].css',
         chunkFilename: 'css/[name].[chunkhash].css',
+      },
+      router: {
+        mode: 'browser', // 设置路由模式为 'browser' 或 'hash'，默认为 'browser'， 'hash' 与 'browser' 分别对应 hash 路由模式和浏览器 history 路由模式
+        customRoutes: router,
       },
       postcss: {
         autoprefixer: {

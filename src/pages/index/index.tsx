@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { View, Text } from '@tarojs/components';
-import { useLoad } from '@tarojs/taro';
+import Taro, { useLoad } from '@tarojs/taro';
 import { Button } from '@antmjs/vantui';
 import { getAppHost, timeout } from '@/utils/index';
 import './index.less';
@@ -87,6 +87,17 @@ export default () => {
         {/**  全边框 **/}
         <View className="van-hairline--surround" style={{ width: '200px', marginBottom: '20px', height: '200px' }}>
           全边框
+        </View>
+        <View>
+          <Button
+            onClick={() => {
+              Taro.navigateTo({
+                url: '/pages/me/index?page=1&name=2',
+              });
+            }}
+          >
+            我的
+          </Button>
         </View>
       </View>
     </View>
