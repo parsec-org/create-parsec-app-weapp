@@ -34,3 +34,24 @@ export const timeout = (time?: number) => {
     }, time ?? 3000);
   });
 };
+
+export const amountFormat = (
+  amount: number,
+  options?: {
+    style: Intl.NumberFormatOptionsStyle | undefined;
+    [key: string]: any;
+  },
+) => {
+  try {
+    const formatter = new Intl.NumberFormat('zh-CN', {
+      style: 'currency',
+      currency: 'CNY',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+      ...options,
+    });
+    return formatter.format(amount);
+  } catch (e) {
+    return amount.toFixed(2);
+  }
+};
