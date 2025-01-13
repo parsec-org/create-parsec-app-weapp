@@ -1076,6 +1076,13 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
+"@babel/runtime@^7.21.5":
+  version "7.26.0"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.26.0.tgz#8600c2f595f277c60815256418b85356a65173c1"
+  integrity sha512-FDSOghenHTiToteC/QRlv2q3DhPZ/oOXTBoirfWNx1Cx3TMVcGWQtMMmQcSvb/JjpNeGzx8Pq/b4fKEJuWm1sw==
+  dependencies:
+    regenerator-runtime "^0.14.0"
+
 "@babel/template@^7.24.7", "@babel/template@^7.25.0", "@babel/template@^7.3.3":
   version "7.25.0"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.25.0.tgz#e733dc3134b4fede528c15bc95e89cb98c52592a"
@@ -2426,6 +2433,35 @@
     "@tarojs/api" "4.0.8"
     "@tarojs/runtime" "4.0.8"
     "@types/postcss-url" "^10.0.4"
+
+"@tarojs/test-utils-dom@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@tarojs/test-utils-dom/-/test-utils-dom-0.1.1.tgz#70ec192a813ad4d71fa9bc9f3f3f8263c75d2741"
+  integrity sha512-IbX/fhfxYZT1sZjFi3i9pGLypUa86I1/HW134BLsn2ByEID3MON1Zay9uT7qAFPQsfGuek/VbjjbyFfrGajULA==
+  dependencies:
+    "@babel/runtime" "^7.21.5"
+    babel-jest "^29.5.0"
+    pretty-format "^29.5.0"
+
+"@tarojs/test-utils-react@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@tarojs/test-utils-react/-/test-utils-react-0.1.1.tgz#52643445b183ba28309fc749cc03cb3836c19c3b"
+  integrity sha512-8F+jqQCe3P37FqWl/Fmy5elH/1LsfSQsZMLWp5II27EdjBUfmXr95EjZ4DJjPJkbfuM4Z9LefjXVk3nghRRdqg==
+  dependencies:
+    "@babel/runtime" "^7.21.5"
+    "@tarojs/test-utils-dom" "0.1.1"
+    "@tarojs/test-utils-shared" "0.1.1"
+    babel-jest "^29.5.0"
+    pretty-format "^29.5.0"
+
+"@tarojs/test-utils-shared@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@tarojs/test-utils-shared/-/test-utils-shared-0.1.1.tgz#03fdda3a42e731b60464cfba4b2d4f8b103063c1"
+  integrity sha512-DnBFzVFrunaR8B80amqwfIAcYVp6kLEXlwC6nY2vfN3JeuMvUI6IOcKq1NqjapuNulI6hwfUKI4Drsz7GZS+cw==
+  dependencies:
+    "@babel/runtime" "^7.21.5"
+    babel-jest "^29.5.0"
+    pretty-format "^29.5.0"
 
 "@tarojs/webpack5-prebundle@4.0.8":
   version "4.0.8"
@@ -3804,7 +3840,7 @@ axios@^1.6.8:
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
 
-babel-jest@^29.7.0:
+babel-jest@^29.5.0, babel-jest@^29.7.0:
   version "29.7.0"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-29.7.0.tgz#f4369919225b684c56085998ac63dbd05be020d5"
   integrity sha512-BrvGY3xZSwEcCzKvKsCi2GgHqDqsYkOP4/by5xCgIwGXQxIEh+8ew3gmrE1y7XRR6LHZIj6yLYnUi/mm2KXKBg==
@@ -10718,7 +10754,7 @@ pretty-format@^26.0.1:
     ansi-styles "^4.0.0"
     react-is "^17.0.1"
 
-pretty-format@^29.7.0:
+pretty-format@^29.5.0, pretty-format@^29.7.0:
   version "29.7.0"
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-29.7.0.tgz#ca42c758310f365bfa71a0bda0a807160b776812"
   integrity sha512-Pdlw/oPxN+aXdmM9R00JVC9WVFoCLTKJvDVLgmJ+qAffBMxsV85l/Lu7sNx4zSzPyoL2euImuEwHhOXdEgNFZQ==

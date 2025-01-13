@@ -9,6 +9,11 @@ const router = {
   // "页面路径": "自定义路由"
   '/pages/index/index': '/', // 首页
   '/pages/me/index': '/me', // 我的
+  '/pages/orders/index': '/orders', // 订单
+  '/pages/store/index': '/store', // 商城
+  '/pages/store/details/index': '/store/details', // 商城
+  '/pages/login/index': '/login', // 登录
+  '/pages/register/index': '/register', // 注册
 };
 
 export default router;

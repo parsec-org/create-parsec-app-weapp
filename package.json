@@ -73,6 +73,7 @@
     "@commitlint/config-conventional": "^19.5.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
     "@tarojs/cli": "4.0.8",
+    "@tarojs/test-utils-react": "^0.1.1",
     "@tarojs/webpack5-runner": "4.0.8",
     "@types/react": "^18.3.5",
     "@types/webpack-env": "^1.18.5",
