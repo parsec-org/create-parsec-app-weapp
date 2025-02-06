@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import Taro, { useLoad } from '@tarojs/taro';
-import { View, Text } from '@tarojs/components';
+import { View, Text, ScrollView } from '@tarojs/components';
 import { Button, Rate, Stepper, Swiper, SwiperItem, Image } from '@antmjs/vantui';
 import { amountFormat } from '@/utils/index';
+import { CategoryItem } from '@/components/index';
 import './index.less';
 
 export default () => {
   const [current, setCurrent] = useState<number>(0);
+  const [activeKey, setActiveKey] = useState<number>(0);
 
   useLoad((e) => {
     console.log('Page loaded.', e);
@@ -15,12 +17,27 @@ export default () => {
   return (
     <View className="store-page-wrap">
       <View className="category-scroll-wrap">
-        {new Array(10).fill(1).map((_, index) => (
-          <View className="category-item-wrap" key={`category-item-${index}`}>
-            <Text>Category</Text>
-            <Text>{index}</Text>
-          </View>
-        ))}
+        <ScrollView
+          scrollX
+          padding={[0, 20, 0, 20]}
+          scrollWithAnimation
+          enableFlex
+          type="custom"
+          scrollLeft={32}
+          showScrollbar={false}
+          scrollIntoViewAlignment="nearest"
+          scrollIntoView={`category-item-wrap-${activeKey}`}
+          className="category-scroll-inner-wrap"
+        >
+          {new Array(10).fill(1).map((_, index) => (
+            <CategoryItem
+              key={`category-item-${index}`}
+              onClick={setActiveKey}
+              data={{ key: index, text: 'Category' }}
+              active={index === activeKey}
+            />
+          ))}
+        </ScrollView>
       </View>
       <View className="recommended-wrap">
         <View className="recommended-hander-wrap">
@@ -43,14 +60,17 @@ export default () => {
           >
             {new Array(4).fill(1).map((_, index) => (
               <SwiperItem key={`swiper#demo1${index}`}>
-                <View
-                  className="recommended-item-wrap"
-                  onClick={() => Taro.navigateTo({ url: `/pages/store/details/index?id=${index}` })}
-                >
-                  <View className="item-image-wrap">
+                <View className="recommended-item-wrap">
+                  <View
+                    className="item-image-wrap"
+                    onClick={() => Taro.navigateTo({ url: `/pages/store/details/index?id=${index}` })}
+                  >
                     <Image className="img" src={require('@/assets/images/products/p_01.png')} />
                   </View>
-                  <View className="item-body-wrap">
+                  <View
+                    className="item-body-wrap"
+                    onClick={() => Taro.navigateTo({ url: `/pages/store/details/index?id=${index}` })}
+                  >
                     <View className="main-info">
                       <View className="title">
                         <Text>Product name</Text>
