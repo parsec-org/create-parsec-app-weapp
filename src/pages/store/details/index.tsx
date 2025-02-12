@@ -22,7 +22,7 @@ export default () => {
 
   return (
     <View className="store-detail-page-wrap">
-      <NavBar leftText="" leftArrow onClickLeft={() => Taro.navigateBack()} />
+      <NavBar fixed safeAreaInsetTop leftText="" leftArrow onClickLeft={() => Taro.navigateBack()} />
       <View className="store-detail-images-wrap">
         <Swiper
           height={300}
