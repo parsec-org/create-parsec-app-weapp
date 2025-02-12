@@ -102,7 +102,7 @@ export default defineConfig(async (merge) => {
       '@/components': path.resolve(__dirname, '..', 'src/components'),
       '@/assets': path.resolve(__dirname, '..', 'src/assets'),
       '@/pages': path.resolve(__dirname, '..', 'src/pages'),
-      '@/servers': path.resolve(__dirname, '..', 'src/servers'),
+      '@/servers': path.resolve(__dirname, '..', 'src/services'),
       '@/package': path.resolve(__dirname, '..', 'package.json'),
       '@/project': path.resolve(__dirname, '..', 'project.config.json'),
     },

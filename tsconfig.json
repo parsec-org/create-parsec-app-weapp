@@ -20,7 +20,7 @@
       "@/components/*": ["./src/components/*"],
       "@/assets/*": ["./src/assets/*"],
       "@/pages/*": ["./src/pages/*"],
-      "@/servers/*": ["./src/servers/*"],
+      "@/services/*": ["./src/services/*"],
       "@/utils/*": ["./src/utils/*"],
       "@/package": ["./package.json"],
       "@/project": ["./project.config.json"]
