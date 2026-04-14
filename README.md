@@ -1,6 +1,6 @@
-# Kindly 用户端小程序
+# Parsec WeApp 小程序
 
-基于 [Taro 4](https://docs.taro.zone/docs/) + [React 18](https://18.react.dev/) + [NutUI](https://nutui.jd.com/taro/react/3x/#/zh-CN/guide/start-react) 的多端小程序项目，用于用户选择服务及人员进行下单功能。
+基于 [Taro 4](https://docs.taro.zone/docs/) + [React 18](https://18.react.dev/) + [NutUI](https://nutui.jd.com/taro/react/3x/#/zh-CN/guide/start-react) 的多端小程序模版项目。
 
 ## 架构概览
 
@@ -96,18 +96,6 @@ if (process.env.TARO_ENV === 'weapp') {
     updateManager.applyUpdate()
   })
 }
-```
-
-### 位置服务
-
-应用启动时自动开启位置更新，用于提供精准服务：
-
-```typescript
-// src/app.tsx
-Taro.startLocationUpdate({
-  type: 'gcj02',
-  needFullAccuracy: true
-})
 ```
 
 ### 国际化配置
