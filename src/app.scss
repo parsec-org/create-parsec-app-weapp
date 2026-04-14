@@ -1,0 +1,35 @@
+/* Tailwind CSS v4 */
+@import 'weapp-tailwindcss';
+
+/* Tailwind CSS v4 主题配置 */
+@theme {
+  /* 自定义颜色 */
+  --color-primary: #00c2a0;
+  --color-warning: #faad14;
+
+  /* 小程序兼容：使用 rpx 单位 */
+  --spacing-1: 2rpx;
+  --spacing-2: 4rpx;
+  --spacing-3: 6rpx;
+  --spacing-4: 8rpx;
+  --spacing-5: 10rpx;
+  --spacing-6: 12rpx;
+  --spacing-8: 16rpx;
+  --spacing-10: 20rpx;
+  --spacing-12: 24rpx;
+  --spacing-16: 32rpx;
+  --spacing-20: 40rpx;
+  --spacing-24: 48rpx;
+  --spacing-32: 64rpx;
+}
+
+:root {
+  page {
+    /* NutUI 主题变量 */
+    --nutui-color-primary: #00c2a0;
+    --nutui-color-primary-stop-1: #00c2a0;
+    --nutui-color-primary-stop-2: #00c2a0;
+    --nutui-button-warning-background-color: #faad14;
+    --nutui-color-warning: #faad14;
+  }
+}

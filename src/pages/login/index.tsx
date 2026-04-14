@@ -1,65 +1,36 @@
-import { useCallback } from 'react';
-import Taro from '@tarojs/taro';
-import { View, Text, Input } from '@tarojs/components';
-import { Button, Form, FormItem, Icon } from '@antmjs/vantui';
-import './index.less';
+import React from 'react'
+import { View } from '@tarojs/components'
+import { Button } from '@nutui/nutui-react-taro'
+import Taro from '@tarojs/taro'
 
-export default () => {
-  const formIt = Form.useForm();
-
-  const handleClick = useCallback(() => {
-    Taro.setStorage({
-      key: 'isLogin',
-      data: true,
-    }).then(() => {
-      Taro.switchTab({ url: '/pages/index/index' });
-    });
-  }, []);
-
+const LoginPage: React.FC = () => {
   return (
-    <View className="login-page-wrap">
-      <View className="login-page-hander-wrap">
-        <View className="dot top" />
-        <View className="title-wrap">
-          <View className="title-inner-wrap">
-            <View className="subtitle">
-              <Text>Create Parsec</Text>
-            </View>
-            <View className="title">
-              <Text>Sign in!</Text>
-            </View>
-          </View>
-        </View>
-        <View className="dot" />
+    <View className='w-full h-full flex flex-col items-center justify-center'>
+      <View className='text-center'>
+        <View className='text-lg font-bold text-blue-600'>登录/注册</View>
+        <View className='text-sm text-gray-500 mt-2'>NutUI + Tailwind 并行使用测试</View>
       </View>
-      <View className="login-page-form-wrap">
-        <Form form={formIt}>
-          <FormItem name="email" label="Email Account" renderRight={<Icon name="envelop-o" size="22px" />}>
-            <Input />
-          </FormItem>
-          <FormItem name="password" label="Password" renderRight={<Icon name="eye-o" size="22px" />}>
-            <Input type="text" password />
-          </FormItem>
-          <View className="form-expand-item">
-            <View>&nbsp;</View>
-            <View onClick={() => Taro.redirectTo({ url: '/pages/register/index' })}>
-              <Text>Not a member?</Text>
-              <Text className="link">Sign Up</Text>
-            </View>
-          </View>
-          <Button
-            type="primary"
-            block
-            round
-            size="large"
-            className="van-button-submit"
-            onClick={handleClick}
-            // formType="submit"
-          >
-            Sign in
-          </Button>
-        </Form>
-      </View>
+      <Button
+        openType='getPhoneNumber'
+        onGetPhoneNumber={e => {
+          console.log('getPhoneNumber', e.detail)
+        }}
+      >
+        <View className='text-center'>获取手机号</View>
+      </Button>
+      <Button
+        onClick={() => {
+          Taro.login({
+            success: loginRes => {
+              console.log('login', loginRes)
+            }
+          })
+        }}
+      >
+        <View className='text-center'>微信登录</View>
+      </Button>
     </View>
-  );
-};
+  )
+}
+
+export default LoginPage

@@ -1,0 +1,10 @@
+# 配置文件
+*.config.js
+.*rc.js
+
+# 依赖和构建
+node_modules/
+dist/
+
+# IDE
+.idea/

@@ -1,17 +1,6 @@
-# Ignore artifacts:
-**/*.png
-**/*.svg
-**/*.ico
-.idea
-.git
-.husky
-.swc/
 dist/
-.npmrc
-node_modules
-package.json
-.prettierignore
-.gitignore
-.eslintrc
-yarn.lock
-.DS_Store
+node_modules/
+.swc/
+.temp/
+*.min.js
+pnpm-lock.yaml

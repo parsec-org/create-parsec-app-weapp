@@ -1,105 +1,124 @@
-import { useCallback, useState } from 'react';
-import { View, Text } from '@tarojs/components';
-import Taro, { useLoad } from '@tarojs/taro';
-import { Button } from '@antmjs/vantui';
-import { getAppHost, timeout } from '@/utils/index';
-import './index.less';
+import { useState } from 'react'
+import {
+  View,
+  Image,
+  CommonEventFunction,
+  SwiperProps as TaroSwiperProps
+} from '@tarojs/components'
+import Taro from '@tarojs/taro'
+import { Button, TextArea, Dialog, Cell, SafeArea, NavBar, Swiper } from '@nutui/nutui-react-taro'
+// 工具函数从 utils 导入，避开 babel-plugin-import 处理
+import { pxTransform, harmony } from '@nutui/nutui-react-taro/dist/es/utils'
+import './index.scss'
 
-export default () => {
-  useLoad(() => {
-    console.log('Page loaded.');
-  });
-  const [value, setValue] = useState<string>();
-
-  const handleClick = useCallback(() => {
-    console.log('dddd', value);
-  }, [value]);
-
-  // 点击事件返回Promise，即可让按钮自带loading状态
-  const handle = async () => {
-    await timeout();
-  };
-
+function Index() {
+  const res = Taro.getSystemInfoSync()
+  console.log(res.model)
+  console.log(res.pixelRatio)
+  console.log(res.windowWidth)
+  console.log(res.windowHeight)
+  console.log(res.language)
+  console.log(res.version)
+  console.log(res.platform)
+  console.log(res.system)
+  console.log(res.statusBarHeight)
+  console.log('harmony', harmony())
+  const [visible, setVisible] = useState(false)
+  const marginStyle = { margin: '8px' }
+  const list = [
+    'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+    'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+    'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+  ]
+  const onChange: CommonEventFunction<TaroSwiperProps.onChangeEventDetail> = e => {
+    console.log(`onChange is trigger ${e}`)
+  }
   return (
-    <View className="index">
-      <Text>Hello world!</Text>
-      <Text>TARO_APP_API:{process.env.TARO_APP_API}</Text>
+    <View className='page' style={{ marginTop: res.statusBarHeight }}>
+      <SafeArea position='top' />
+      <NavBar
+        title='页面标题'
+        safeAreaInsetTop
+        back={
+          <>
+            <div style={{ marginRight: 16 }}>1</div>
+            返回
+          </>
+        }
+        right={<div onClick={_ => Taro.showToast({ title: 'icon' })}>2</div>}
+        onBackClick={_ => Taro.showToast({ title: '返回' })}
+      >
+        NavBar
+      </NavBar>
+      <View>欢迎使用 NutUI React 开发 Taro 多端项目。</View>
+      {/* Tailwind CSS 测试 */}
+      <View className='flex flex-col items-center p-4 bg-blue-100 rounded-lg mt-4'>
+        <View className='text-lg font-bold text-blue-600'>Tailwind CSS 已集成</View>
+        <View className='text-sm text-gray-500 mt-2'>NutUI + Tailwind 并行使用测试</View>
+      </View>
       <View>
+        <Swiper defaultValue={2} autoplay indicator height={pxTransform(200)} onChange={onChange}>
+          {list.map((item, index) => (
+            <Swiper.Item key={item}>
+              <Image
+                style={{ width: '100%', height: '100%' }}
+                onClick={() => console.log(index)}
+                src={item}
+              />
+            </Swiper.Item>
+          ))}
+        </Swiper>
+      </View>
+      <View>
+        <Dialog
+          visible={visible}
+          onConfirm={() => setVisible(false)}
+          onCancel={() => setVisible(false)}
+        >
+          点击打开
+        </Dialog>
+        <TextArea showCount maxLength={20} />
+      </View>
+      <Cell style={{ flexWrap: 'wrap' }}>
+        <Button openType='share' style={marginStyle}>
+          Share
+        </Button>
+        <Button openType='openSetting' style={marginStyle}>
+          打开授权设置页
+        </Button>
+      </Cell>
+      <Cell style={{ flexWrap: 'wrap' }}>
+        <Button type='primary' style={marginStyle}>
+          Primary
+        </Button>
+        <Button type='info' style={marginStyle}>
+          Info
+        </Button>
+        <Button type='default' style={marginStyle}>
+          Default
+        </Button>
+        <Button type='danger' style={marginStyle}>
+          Danger
+        </Button>
+        <Button type='warning' style={marginStyle}>
+          Warning
+        </Button>
+        <Button type='success' style={marginStyle}>
+          Success
+        </Button>
         <Button
-          type="default"
+          type='success'
+          style={marginStyle}
           onClick={() => {
-            const host = getAppHost();
-            console.log('host:', host);
+            Taro.redirectTo({ url: '/pages/login/index' })
           }}
         >
-          默认按钮
+          Login
         </Button>
-        <Button type="primary" onClick={handleClick}>
-          主要按钮
-        </Button>
-        <Button
-          type="info"
-          onClick={() => {
-            setValue('weqeqeqeqweq');
-          }}
-        >
-          信息按钮
-        </Button>
-        <Button type="warning">警告按钮</Button>
-        <Button type="danger">危险按钮</Button>
-        <Button type="info" onClick={handle} loadingText="提交中...">
-          确认提交
-        </Button>
-        <Button type="primary" onClick={handle} loadingMode="toast" loadingText="提交中..." loadingType="spinner">
-          确认提交
-        </Button>
-      </View>
-      <View>
-        <Button plain hairline type="primary">
-          细边框按钮
-        </Button>
-        <Button plain hairline type="info">
-          细边框按钮
-        </Button>
-      </View>
-      <View>
-        <Text>内置样式</Text>
-      </View>
-      <View>
-        <View className="van-ellipsis" style={{ width: '200px', marginBottom: '20px' }}>
-          这是一段宽度限制 250px 的文字，后面的内容会省略。
-        </View>
-
-        {/**  最多显示两行**/}
-        <View className="van-multi-ellipsis--l2" style={{ width: '200px', marginBottom: '20px' }}>
-          这是一段最多显示两行的文字，后面的内容会省略。 这是一段最多显示两行的文字，后面的内容会省略。
-        </View>
-
-        {/**  最多显示三行**/}
-        <View className="van-multi-ellipsis--l3" style={{ width: '200px' }}>
-          这是一段最多显示三行的文字，后面的内容会省略。 这是一段最多显示两行的文字，后面的内容会省略。
-          这是一段最多显示两行的文字，后面的内容会省略。
-        </View>
-
-        {/**  上边框,可选各个方向 **/}
-        <View className="van-hairline--top" style={{ width: '200px', marginBottom: '20px' }}></View>
-
-        {/**  全边框 **/}
-        <View className="van-hairline--surround" style={{ width: '200px', marginBottom: '20px', height: '200px' }}>
-          全边框
-        </View>
-        <View>
-          <Button
-            onClick={() => {
-              Taro.navigateTo({
-                url: '/pages/me/index?page=1&name=2',
-              });
-            }}
-          >
-            我的
-          </Button>
-        </View>
-      </View>
+      </Cell>
     </View>
-  );
-};
+  )
+}
+
+export default Index

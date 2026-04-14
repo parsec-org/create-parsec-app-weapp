@@ -30,6 +30,6 @@
     "resolveJsonModule": true,
     "typeRoots": ["node_modules/@types"]
   },
-  "include": ["./src", "./types", "./config"],
+  "include": ["./src", "./types"],
   "compileOnSave": false
 }

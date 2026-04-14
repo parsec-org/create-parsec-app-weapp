@@ -1,9 +1,13 @@
 {
   "miniprogramRoot": "./",
-  "projectname": "app",
-  "appid": "testAppId",
+  "projectname": "weapp",
+  "description": "Kindly 用户端，主要是微信小程序。用于用户选择服务及人员进行下单功能",
+  "appid": "touristappid",
   "setting": {
+    "urlCheck": true,
     "es6": false,
+    "postcss": false,
     "minified": false
-  }
+  },
+  "compileType": "miniprogram"
 }

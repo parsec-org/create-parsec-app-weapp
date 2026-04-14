@@ -6,19 +6,24 @@ module.exports = {
       'taro',
       {
         framework: 'react',
-        ts: true,
-      },
-    ],
+        ts: 'true',
+        compiler: 'webpack5'
+      }
+    ]
   ],
   plugins: [
     [
       'import',
       {
-        libraryName: '@antmjs/vantui',
-        libraryDirectory: 'es',
-        style: true,
+        libraryName: '@nutui/nutui-react-taro',
+        camel2DashComponentName: false,
+        customName: name => {
+          return `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}`
+        },
+        customStyleName: name =>
+          `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style`
       },
-      '@antmjs/vantui',
-    ],
-  ],
-};
+      'nutui-react'
+    ]
+  ]
+}
