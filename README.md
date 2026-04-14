@@ -2,6 +2,8 @@
 
 基于 [Taro 4](https://docs.taro.zone/docs/) + [React 18](https://18.react.dev/) + [NutUI](https://nutui.jd.com/taro/react/3x/#/zh-CN/guide/start-react) 的多端小程序模版项目。
 
+模版中的代码都可以作为学习参考，欢迎大家使用和贡献！如果你有任何问题或建议，请随时提交 issue 或 pull request。
+
 ## 架构概览
 
 ```
