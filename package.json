@@ -1,8 +1,13 @@
 {
-  "name": "weapp",
+  "name": "parsec-weapp",
   "version": "1.0.0",
   "private": true,
-  "description": "Kindly 用户端，主要是微信小程序。用于用户选择服务及人员进行下单功能",
+  "description": "{{description}}",
+  "repository": {
+    "type": "git",
+    "url": "{{git}}"
+  },
+  "author": "{{author}}",
   "templateInfo": {
     "name": "react-NutUI",
     "typescript": true,
@@ -40,7 +45,6 @@
     "Android >= 4.1",
     "ios >= 8"
   ],
-  "author": "",
   "dependencies": {
     "@babel/runtime": "^7.21.5",
     "@nutui/nutui-react-taro": "^3.0.19",

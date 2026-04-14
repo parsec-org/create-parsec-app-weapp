@@ -10,8 +10,8 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
   console.log('command：', command)
   console.log('mode：', mode)
   const baseConfig: UserConfigExport<'webpack5'> = {
-    projectName: 'weapp',
-    date: '2026-3-28',
+    projectName: 'parsec-weapp',
+    date: '2026-4-14',
     designWidth: 375,
     deviceRatio: {
       640: 2.34 / 2,
